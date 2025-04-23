@@ -120,9 +120,12 @@ if submitted:
     confidence = model.predict_proba(input_df)[0][1]
 
     st.subheader("📈 Prediction Result")
-    if prediction == 1:
+    if confidence >= 0.20:
+        adjusted_conf = confidence * 0.5 + 0.5
         st.error("⚠️ High Risk of Alzheimer's Detected")
     else:
+        adjusted_conf = confidence * 0.5        # display 0%-50% for low risk
         st.success("✅ Low Risk of Alzheimer's Detected")
 
-    st.info(f"Model Confidence: **{confidence*100:.2f}%**")
+    st.info(f"Model Confidence: **{adjusted_conf*100:.2f}%**")
+``
