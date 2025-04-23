@@ -128,4 +128,3 @@ if submitted:
         st.success("✅ Low Risk of Alzheimer's Detected")
 
     st.info(f"Model Confidence: **{adjusted_conf*100:.2f}%**")
-``
